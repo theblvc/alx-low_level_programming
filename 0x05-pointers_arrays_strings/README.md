@@ -1,0 +1,1 @@
+this pointers and strings

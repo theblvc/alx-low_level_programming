@@ -97,4 +97,3 @@ char **strtow(char *str)
 
 	return (matrix);
 }
-}

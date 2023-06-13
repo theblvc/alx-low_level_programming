@@ -26,6 +26,30 @@ int count_words(char *s)
 }
 
 /**
+ * allocate_word - helper function to allocate memory for a word
+ * @str: string containing the word
+ * @start: starting index of the word
+ * @end: ending index of the word
+ *
+ * Return: pointer to the allocated word, or NULL on failure
+ */
+char *allocate_word(char *str, int start, int end)
+{
+	char *word;
+	int i, length = end - start;
+
+	word = malloc(sizeof(char) * (length + 1));
+	if (word == NULL)
+		return (NULL);
+
+	for (i = 0; i < length; i++)
+		word[i] = str[start + i];
+	word[length] = '\0';
+
+	return (word);
+}
+
+/**
  * strtow - splits a string into words
  * @str: string to split
  *
@@ -34,7 +58,7 @@ int count_words(char *s)
  */
 char **strtow(char *str)
 {
-	char **matrix, *tmp;
+	char **matrix, *word;
 	int i, k = 0, len = 0, words = 0, c = 0, start, end;
 
 	if (str == NULL || *str == '\0')
@@ -46,7 +70,7 @@ char **strtow(char *str)
 	if (words == 0)
 		return (NULL);
 
-	matrix = (char **)malloc(sizeof(char *) * (words + 1));
+	matrix = malloc(sizeof(char *) * (words + 1));
 	if (matrix == NULL)
 		return (NULL);
 
@@ -57,13 +81,10 @@ char **strtow(char *str)
 			if (c)
 			{
 				end = i;
-				tmp = (char *)malloc(sizeof(char) * (c + 1));
-				if (tmp == NULL)
+				word = allocate_word(str, start, end);
+				if (word == NULL)
 					return (NULL);
-				while (start < end)
-					*tmp++ = str[start++];
-				*tmp = '\0';
-				matrix[k] = tmp - c;
+				matrix[k] = word;
 				k++;
 				c = 0;
 			}
@@ -75,4 +96,5 @@ char **strtow(char *str)
 	matrix[k] = NULL;
 
 	return (matrix);
+}
 }

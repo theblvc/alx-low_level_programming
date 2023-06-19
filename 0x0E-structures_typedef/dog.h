@@ -15,15 +15,21 @@ struct dog
 	float age;
 	char *owner;
 };
+int main(void)
+{
+    struct dog my_dog;
 
+    my_dog.name = "Poppy";
+    my_dog.age = 3.5;
+    my_dog.owner = "Bob";
+    printf("My name is %s, and I am %.1f :) - Woof!\n", my_dog.name, my_dog.age);
+    return (0);
+}
 /**
  * dog_t - typedef for struct dog
  */
 typedef struct dog dog_t;
 
-my_dog.name = "Buddy";
-my_dog.age = 4.5;
-my_dog.owner = "John Doe";
 
 void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);

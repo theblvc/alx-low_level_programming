@@ -1,1 +1,1 @@
-This is the Single Linked List
+Singly linked lists

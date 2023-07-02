@@ -1,1 +1,1 @@
-This typedeef and struct
+STRUCTURES AND TYPEDEF

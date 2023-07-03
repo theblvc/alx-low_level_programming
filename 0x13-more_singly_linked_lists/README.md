@@ -1,1 +1,1 @@
-This is the More singly project
+This is the More Singly Project
